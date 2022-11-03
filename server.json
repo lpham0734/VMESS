@@ -1,0 +1,84 @@
+{
+  "outbound": {
+    "streamSettings": null,
+    "tag": null,
+    "protocol": "freedom",
+    "mux": null,
+    "settings": null
+  },
+  "log": {
+    "access": "",
+    "loglevel": "info",
+    "error": ""
+  },
+  "outboundDetour": [
+    {
+      "tag": "direct",
+      "protocol": "freedom",
+      "settings": null
+    },
+    {
+      "tag": "blocked",
+      "protocol": "blackhole",
+      "settings": null
+    }
+  ],
+  "inbound": {
+    "streamSettings": {
+      "network": "h2",
+      "httpSettings": {
+        "path": "/PATH/",
+        "Host": [
+          "www.baidu.com",
+          "www.bing.com"
+        ]
+      },
+      "security": "tls",
+      "tlsSettings": {
+        "serverName": "127.0.0.1",
+        "allowInsecure": true,
+        "certificates": [
+          {
+            "certificateFile": "52281395_127.0.0.1.cert",
+            "keyFile": "52281395_127.0.0.1.key"
+          }
+        ]
+      }
+    },
+    "settings": {
+      "ip": null,
+      "udp": true,
+      "clients": [
+        {
+          "alterId": 64,
+          "security": "none",
+          "id": "a98c2afd-966d-4cce-a8ff-7935a14dd413"
+        }
+      ],
+      "auth": null
+    },
+    "protocol": "vmess",
+    "port": 10001,
+    "listen": "127.0.0.1"
+  },
+  "inboundDetour": null,
+  "routing": {
+    "settings": {
+      "rules": [
+        {
+          "ip": [
+            "geoip:private",
+            "geoip:cn"
+          ],
+          "domain": null,
+          "type": "field",
+          "port": null,
+          "outboundTag": "blocked"
+        }
+      ],
+      "domainStrategy": null
+    },
+    "strategy": "rules"
+  },
+  "dns": null
+}
